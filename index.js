@@ -1,21 +1,19 @@
 const container = document.getElementById('background-blur');
-const boxImagem = document.getElementById('box-image');
-const img = document.getElementById('imagem');
+const boxImagem = document.getElementById('image');
 const dogName = document.getElementById('dog-name');
 
 const button = document.getElementById('gerate-image')
 .addEventListener('click', getImagem);
 
 async function getImagem() {
+    let response = await fetch('https://dog.ceo/api/breeds/image/random');
+    let jsonDog = await response.json();
+    let url = jsonDog.message
     
-    let dados = await fetch('https://dog.ceo/api/breeds/image/random');
-    
-    let dadosImagem = await dados.json();
-
-    raca(dadosImagem.message)
-    backgroundBlur(dadosImagem.message)
-    showImagem(dadosImagem.message)
-    
+    document.getElementById('dog-box').style.display = 'block';
+    backgroundBlur(url)
+    showImagem(url)
+    raca(url)
 }
 
 function backgroundBlur(bck) {
