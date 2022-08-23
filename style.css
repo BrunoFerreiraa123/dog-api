@@ -18,7 +18,7 @@ div.background-blur {
     background-position: center;
 }
 
-div.box-image {
+div.image {
     width: 400px;
     height: 400px;
     border-radius: 5px;
@@ -30,6 +30,7 @@ div.box-image {
 }
 
 div#dog-box {
+    display: block;
     position: absolute;
     top:50%;
     left: 50%;
@@ -57,8 +58,16 @@ h2 {
 }
 
 button#gerate-image {
-    position: absolute;
-    top:0;
-    left: 0;
+    margin: 20px;
+    padding: 0 30px;;
+    height: 45px;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba( 0, 0, 0, 0.8 );
+    border-radius: 5px;
+    color:rgb(0, 0, 0);
+    cursor: pointer;
 }
-
