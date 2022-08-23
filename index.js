@@ -1,8 +1,9 @@
-const container = document.getElementById('backgroundBlur');
+const container = document.getElementById('background-blur');
+const boxImagem = document.getElementById('box-image');
 const img = document.getElementById('imagem');
-const boxImagem = document.getElementById('box-image')
+const dogName = document.getElementById('dog-name');
 
-const button = document.getElementById('gerateImage')
+const button = document.getElementById('gerate-image')
 .addEventListener('click', getImagem);
 
 async function getImagem() {
@@ -27,4 +28,5 @@ function showImagem(img) {
 
 function raca(text) {
     let textoFormatado = text.substring(30, text.lastIndexOf('/'))
+    dogName.innerText = textoFormatado
 }
