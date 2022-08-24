@@ -35,7 +35,7 @@ div#dog-box {
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     margin: 20px;
     padding: 10px 15px;
-    display: inline-block;
+    display: none;
 }
 
 a {
@@ -52,7 +52,7 @@ i {
     color:rgb(255, 255, 255);
     font-size: 15px;
     font-weight: 300;
-    display: inline;
+    display: none;
     position: relative;
     bottom: 10px;
 }
