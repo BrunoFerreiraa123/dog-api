@@ -97,3 +97,17 @@ button#gerate-image {
     }
 }
 
+@media screen and (max-width: 320px) {
+    div.image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .name {
+        padding: 10px;
+    }
+
+    a {
+        font-size: 20px;
+    }
+}
