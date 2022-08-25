@@ -48,11 +48,11 @@ a {
     text-decoration: none;
 }
 
-i {
+.name i {
     color:rgb(255, 255, 255);
     font-size: 15px;
-    font-weight: 300;
-    display: none;
+    font-weight: 900;
+    display: inline;
     position: relative;
     bottom: 10px;
 }
@@ -70,10 +70,16 @@ div.image {
     margin: 0 auto;
     
 }
+button {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
 
 button#gerate-image {
-    margin: 20px;
-    padding: 0 30px;;
+    margin-top: 20px;
+    padding: 0 30px;
     height: 45px;
     font-size: 20px;
     text-transform: uppercase;
@@ -84,6 +90,17 @@ button#gerate-image {
     border-radius: 5px;
     color:rgb(0, 0, 0);
     cursor: pointer;
+}
+
+#previous-image, #next-image {
+    display: none;
+    cursor:pointer;
+    font-size: 75px;
+    font-weight: 600;
+    color:rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 @media screen and (max-width: 768px) {
