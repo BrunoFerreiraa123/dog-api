@@ -15,6 +15,7 @@ button.addEventListener('click', getImagem);
 nextImg.addEventListener('click', getImagem);
 
 async function getImagem() {
+    resetButtons();
     
     let response = await fetch('https://dog.ceo/api/breeds/image/random');
     let jsonDog = await response.json();
@@ -45,4 +46,10 @@ function race(text) {
     dogName.innerText = `${textoFormatado}  `;
     dogName.href = `https://www.google.com/search?q=dog+${textoFormatado}`
     document.getElementsByClassName('name')[0].style.display = 'inline-block';
+}
+
+function resetButtons() {
+    button.style.display = "none";
+    previousImg.style.display = "inline";
+    nextImg.style.display = "inline";
 }
