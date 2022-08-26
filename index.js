@@ -55,6 +55,13 @@ function resetButtons() {
 }
 
 previousImg.addEventListener('click', () => {
+    /*
+    A lógica dessa funcão é checar se os dois arrays onde são armazenados
+    as imagens são iguais, se sim, significa que é o primeiro clique do usuario
+    (primeira vez que ele quer rever uma imagem), nesse caso, a imagem que já está em 
+    exibição deve receber um pop e em só em seguida guardar a proxima imagem em um novo pop,
+    do contrário o usuário precisaria clicar 2x na seta para a imagem voltar.
+    */
     let lastIndex;
     
     if (arrImg.length !== arrayPreviousImg.length && arrayPreviousImg.length > 0) {
