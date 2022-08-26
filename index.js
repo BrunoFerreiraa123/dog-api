@@ -53,3 +53,26 @@ function resetButtons() {
     previousImg.style.display = "inline";
     nextImg.style.display = "inline";
 }
+
+previousImg.addEventListener('click', () => {
+    let lastIndex;
+    
+    if (arrImg.length !== arrayPreviousImg.length && arrayPreviousImg.length > 0) {
+
+        lastIndex = arrayPreviousImg.pop();
+        backgroundBlur(lastIndex);
+        showImagem(lastIndex);
+        race(lastIndex)
+
+    }
+    
+    if(arrImg.length === arrayPreviousImg.length &&arrayPreviousImg.length > 0) {
+
+        arrayPreviousImg.pop();
+        lastIndex = arrayPreviousImg.pop();
+        backgroundBlur(lastIndex);
+        showImagem(lastIndex);
+        race(lastIndex)
+
+    }    
+})
