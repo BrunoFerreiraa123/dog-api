@@ -6,31 +6,33 @@ const button = document.getElementById('gerate-image');
 const previousImg = document.getElementById('previous-image');
 const nextImg = document.getElementById('next-image');
 
-let arrayImg = []
+let arrayPreviousImg = [];
+let arrayNextImg = [];
+let arrImg = [];
+let curImg;
 
 button.addEventListener('click', getImagem);
 nextImg.addEventListener('click', getImagem);
 
 async function getImagem() {
-    button.style.display = "none";
-    previousImg.style.display = "inline";
-    nextImg.style.display = "inline";
-
-    console.log(arrayImg);
-
+    
     let response = await fetch('https://dog.ceo/api/breeds/image/random');
     let jsonDog = await response.json();
     let url = jsonDog.message
-       
+    
     backgroundBlur(url)
     showImagem(url)
     race(url)
+    
+    curImg = url;
 
-    return arrayImg.push(url);
+    arrayPreviousImg.push(url);
+    arrImg.push(url);
+
 }
 
 function backgroundBlur(bck) {
-    container.style.backgroundImage = `url(${bck})`; 
+    container.style.backgroundImage = `url(${bck})`;
 }
 
 function showImagem(img) {
@@ -43,5 +45,4 @@ function race(text) {
     dogName.innerText = `${textoFormatado}  `;
     dogName.href = `https://www.google.com/search?q=dog+${textoFormatado}`
     document.getElementsByClassName('name')[0].style.display = 'inline-block';
-
 }
