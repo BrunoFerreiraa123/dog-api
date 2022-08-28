@@ -9,7 +9,6 @@ const nextImg = document.getElementById('next-image');
 let arrayPreviousImg = [];
 let arrayNextImg = [];
 let arrImg = [];
-let curImg;
 
 button.addEventListener('click', getImagem);
 nextImg.addEventListener('click', getImagem);
@@ -25,8 +24,6 @@ async function getImagem() {
     showImagem(url)
     race(url)
     
-    curImg = url;
-
     arrayPreviousImg.push(url);
     arrImg.push(url);
 
