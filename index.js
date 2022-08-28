@@ -11,7 +11,7 @@ let arrayNextImg = [];
 let arrImg = [];
 
 button.addEventListener('click', getImagem);
-nextImg.addEventListener('click', getImagem);
+nextImg.addEventListener('click', nextFunction);
 
 async function getImagem() {
     resetButtons();
@@ -26,7 +26,6 @@ async function getImagem() {
     
     arrayPreviousImg.push(url);
     arrImg.push(url);
-
 }
 
 function backgroundBlur(bck) {
@@ -51,6 +50,7 @@ function resetButtons() {
     nextImg.style.display = "inline";
 }
 
+let amountReturn = [];
 previousImg.addEventListener('click', () => {
     /*
     A lógica dessa funcão é checar se os dois arrays onde são armazenados
@@ -60,6 +60,8 @@ previousImg.addEventListener('click', () => {
     do contrário o usuário precisaria clicar 2x na seta para a imagem voltar.
     */
     let lastIndex;
+    let firstPop;
+    amountReturn.push(1);
     
     if (arrImg.length !== arrayPreviousImg.length && arrayPreviousImg.length > 0) {
 
@@ -67,16 +69,34 @@ previousImg.addEventListener('click', () => {
         backgroundBlur(lastIndex);
         showImagem(lastIndex);
         race(lastIndex)
+        arrayNextImg.push(lastIndex)
 
     }
     
     if(arrImg.length === arrayPreviousImg.length &&arrayPreviousImg.length > 0) {
 
-        arrayPreviousImg.pop();
+        firstPop = arrayPreviousImg.pop();
         lastIndex = arrayPreviousImg.pop();
         backgroundBlur(lastIndex);
         showImagem(lastIndex);
         race(lastIndex)
+        arrayNextImg.push(firstPop)
+        arrayNextImg.push(lastIndex)
 
     }    
 })
+
+function nextFunction() {
+        let nextIndex;
+
+        if(amountReturn.length > 0) {
+            amountReturn.pop;
+            nextIndex = arrayNextImg.shift();
+            backgroundBlur(nextIndex);
+            showImagem(nextIndex);
+            race(nextIndex)
+        }
+        else {
+            getImagem();
+        }
+}
