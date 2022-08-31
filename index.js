@@ -8,7 +8,7 @@ const nextImg = document.getElementById('next-image');
 
 let arrayPreviousImg = [];
 let arrayNextImg = [];
-let arrImg = [];
+let controller = true;
 
 button.addEventListener('click', getImagem);
 nextImg.addEventListener('click', nextFunction);
@@ -25,7 +25,7 @@ async function getImagem() {
     race(url)
     
     arrayPreviousImg.push(url);
-    arrImg.push(url);
+    arrayNextImg.push(url);
 }
 
 function backgroundBlur(bck) {
@@ -50,53 +50,18 @@ function resetButtons() {
     nextImg.style.display = "inline";
 }
 
-let amountReturn = [];
 previousImg.addEventListener('click', () => {
-    /*
-    A lógica dessa funcão é checar se os dois arrays onde são armazenados
-    as imagens são iguais, se sim, significa que é o primeiro clique do usuario
-    (primeira vez que ele quer rever uma imagem), nesse caso, a imagem que já está em 
-    exibição deve receber um pop e em só em seguida guardar a proxima imagem em um novo pop,
-    do contrário o usuário precisaria clicar 2x na seta para a imagem voltar.
-    */
-    let lastIndex;
-    let firstPop;
-    amountReturn.push(1);
+    if(controller === true) {
+        arrayPreviousImg.pop();
+        console.log(arrayPreviousImg[arrayPreviousImg.length - 1])
+    }
+    else {
+        for(let i = 2; i >= arrayPreviousImg.length; i ++) {
     
-    if (arrImg.length !== arrayPreviousImg.length && arrayPreviousImg.length > 0) {
-
-        lastIndex = arrayPreviousImg.pop();
-        backgroundBlur(lastIndex);
-        showImagem(lastIndex);
-        race(lastIndex)
-        arrayNextImg.push(lastIndex)
+            console.log(arrayPreviousImg[arrayPreviousImg.length - i])
+        }
 
     }
-    
-    if(arrImg.length === arrayPreviousImg.length &&arrayPreviousImg.length > 0) {
 
-        firstPop = arrayPreviousImg.pop();
-        lastIndex = arrayPreviousImg.pop();
-        backgroundBlur(lastIndex);
-        showImagem(lastIndex);
-        race(lastIndex)
-        arrayNextImg.push(firstPop)
-        arrayNextImg.push(lastIndex)
-
-    }    
+    controller = false;
 })
-
-function nextFunction() {
-        let nextIndex;
-
-        if(amountReturn.length > 0) {
-            amountReturn.pop;
-            nextIndex = arrayNextImg.shift();
-            backgroundBlur(nextIndex);
-            showImagem(nextIndex);
-            race(nextIndex)
-        }
-        else {
-            getImagem();
-        }
-}
