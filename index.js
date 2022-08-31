@@ -65,3 +65,7 @@ previousImg.addEventListener('click', () => {
 
     controller = false;
 })
+
+function nextFunction() {
+        getImagem()
+}
