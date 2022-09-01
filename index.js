@@ -8,7 +8,7 @@ const nextImg = document.getElementById('next-image');
 
 let arrayPreviousImg = [];
 let arrayNextImg = [];
-let controller = true;
+let contador = 0;
 
 button.addEventListener('click', getImagem);
 nextImg.addEventListener('click', nextFunction);
@@ -26,6 +26,7 @@ async function getImagem() {
     
     arrayPreviousImg.push(url);
     arrayNextImg.push(url);
+    contador = arrayPreviousImg.length;
 }
 
 function backgroundBlur(bck) {
@@ -50,20 +51,14 @@ function resetButtons() {
     nextImg.style.display = "inline";
 }
 
+
 previousImg.addEventListener('click', () => {
-    if(controller === true) {
-        arrayPreviousImg.pop();
-        console.log(arrayPreviousImg[arrayPreviousImg.length - 1])
-    }
-    else {
-        for(let i = 2; i >= arrayPreviousImg.length; i ++) {
-    
-            console.log(arrayPreviousImg[arrayPreviousImg.length - i])
-        }
+    contador -= 1;
 
-    }
+    console.log(contador)
 
-    controller = false;
+    console.log(arrayPreviousImg[contador])
+
 })
 
 function nextFunction() {
