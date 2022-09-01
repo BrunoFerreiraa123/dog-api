@@ -9,6 +9,7 @@ const nextImg = document.getElementById('next-image');
 let arrayPreviousImg = [];
 let arrayNextImg = [];
 let contador = 0;
+let controller = true;
 
 button.addEventListener('click', getImagem);
 nextImg.addEventListener('click', nextFunction);
@@ -63,4 +64,8 @@ previousImg.addEventListener('click', () => {
 
 function nextFunction() {
         getImagem()
+}
+
+function checkFirstClick() {
+    return controller === true ? true : false;
 }
