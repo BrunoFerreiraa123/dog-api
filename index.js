@@ -54,11 +54,22 @@ function resetButtons() {
 
 
 previousImg.addEventListener('click', () => {
-    contador -= 1;
-
-    console.log(contador)
-
-    console.log(arrayPreviousImg[contador])
+    if(contador > 0) {
+        contador -= 1;
+    
+        if(checkFirstClick()) {
+            contador -= 1;
+            controller = false;
+        }
+     
+        backgroundBlur(arrayPreviousImg[contador])
+        showImagem(arrayPreviousImg[contador])
+        race(arrayPreviousImg[contador])
+    
+    }
+    else {
+        console.log("acabou")
+    }
 
 })
 
