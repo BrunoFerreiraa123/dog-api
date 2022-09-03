@@ -26,7 +26,6 @@ async function getImagem() {
     race(url)
     
     arrayPreviousImg.push(url);
-    arrayNextImg.push(url);
     contador = arrayPreviousImg.length;
 }
 
@@ -58,13 +57,15 @@ previousImg.addEventListener('click', () => {
         contador -= 1;
     
         if(checkFirstClick()) {
-            contador -= 1;
+            contador -= 1; // caso for o primeiro clique essa segunda remocao do contador serve para retirar a imagem atual e contar a próxima
             controller = false;
         }
      
         backgroundBlur(arrayPreviousImg[contador])
         showImagem(arrayPreviousImg[contador])
         race(arrayPreviousImg[contador])
+
+        arrayNextImg.push(arrayPreviousImg[contador])
     
     }
     else {
