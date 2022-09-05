@@ -10,13 +10,13 @@ let arrayPreviousImg = [];
 let arrayNextImg = [];
 let counterPrevious = 0;
 let counterNext = 1;
-let firstPrevious = true;
+let firstPrevious;
 let amountPrevious = 0;
 
 button.addEventListener('click', getImagem);
 
 async function getImagem() {
-    firstPrevious === true;
+
     resetButtons();
 
     let response = await fetch('https://dog.ceo/api/breeds/image/random');
@@ -62,6 +62,7 @@ previousImg.addEventListener('click', () => {
         amountPrevious += 1;
 
         console.log(firstPrevious)
+
         if (checkFirstClick()) {
             counterPrevious -= 1; // caso for o primeiro clique essa segunda remocao do contador serve para retirar a imagem atual e contar a próxima
             firstPrevious = false;
@@ -79,6 +80,7 @@ previousImg.addEventListener('click', () => {
 })
 
 nextImg.addEventListener('click', () => {
+
     if(amountPrevious === 0) {
         getImagem()
     }
