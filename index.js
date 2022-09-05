@@ -78,6 +78,21 @@ previousImg.addEventListener('click', () => {
 
 })
 
+nextImg.addEventListener('click', () => {
+    if(amountPrevious === 0) {
+        getImagem()
+    }
+    else {
+        backgroundBlur(arrayNextImg[arrayNextImg.length - amountPrevious])
+        showImagem(arrayNextImg[arrayNextImg.length - amountPrevious])
+        race(arrayNextImg[arrayNextImg.length - amountPrevious])
+
+        counterPrevious += 1;
+        amountPrevious -= 1;
+    }
+
+});
+
 function checkFirstClick() {
     return firstPrevious === true ? true : false;
 }
