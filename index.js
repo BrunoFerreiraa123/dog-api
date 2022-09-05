@@ -16,6 +16,7 @@ let amountPrevious = 0;
 button.addEventListener('click', getImagem);
 
 async function getImagem() {
+    firstPrevious = true;
 
     resetButtons();
 
@@ -61,8 +62,6 @@ previousImg.addEventListener('click', () => {
         counterPrevious -= 1;
         amountPrevious += 1;
 
-        console.log(firstPrevious)
-
         if (checkFirstClick()) {
             counterPrevious -= 1; // caso for o primeiro clique essa segunda remocao do contador serve para retirar a imagem atual e contar a próxima
             firstPrevious = false;
@@ -74,7 +73,7 @@ previousImg.addEventListener('click', () => {
 
     }
     else {
-        console.log("acabou")
+        return
     }
 
 })
