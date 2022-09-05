@@ -8,25 +8,28 @@ const nextImg = document.getElementById('next-image');
 
 let arrayPreviousImg = [];
 let arrayNextImg = [];
-let contador = 0;
-let controller = true;
+let counterPrevious = 0;
+let counterNext = 1;
+let firstPrevious = true;
+let amountPrevious = 0;
 
 button.addEventListener('click', getImagem);
-nextImg.addEventListener('click', nextFunction);
 
 async function getImagem() {
+    firstPrevious === true;
     resetButtons();
-    
+
     let response = await fetch('https://dog.ceo/api/breeds/image/random');
     let jsonDog = await response.json();
     let url = jsonDog.message
-    
+
     backgroundBlur(url)
     showImagem(url)
     race(url)
-    
+
     arrayPreviousImg.push(url);
-    contador = arrayPreviousImg.length;
+    arrayNextImg.push(url);
+    counterPrevious = arrayPreviousImg.length;
 }
 
 function backgroundBlur(bck) {
@@ -53,20 +56,21 @@ function resetButtons() {
 
 
 previousImg.addEventListener('click', () => {
-    if(contador > 0) {
-        contador -= 1;
-    
-        if(checkFirstClick()) {
-            contador -= 1; // caso for o primeiro clique essa segunda remocao do contador serve para retirar a imagem atual e contar a próxima
-            controller = false;
-        }
-     
-        backgroundBlur(arrayPreviousImg[contador])
-        showImagem(arrayPreviousImg[contador])
-        race(arrayPreviousImg[contador])
+    if (counterPrevious > 0) {
+        
+        counterPrevious -= 1;
+        amountPrevious += 1;
 
-        arrayNextImg.push(arrayPreviousImg[contador])
-    
+        console.log(firstPrevious)
+        if (checkFirstClick()) {
+            counterPrevious -= 1; // caso for o primeiro clique essa segunda remocao do contador serve para retirar a imagem atual e contar a próxima
+            firstPrevious = false;
+        }
+
+        backgroundBlur(arrayPreviousImg[counterPrevious])
+        showImagem(arrayPreviousImg[counterPrevious])
+        race(arrayPreviousImg[counterPrevious])
+
     }
     else {
         console.log("acabou")
@@ -74,10 +78,6 @@ previousImg.addEventListener('click', () => {
 
 })
 
-function nextFunction() {
-        getImagem()
-}
-
 function checkFirstClick() {
-    return controller === true ? true : false;
+    return firstPrevious === true ? true : false;
 }
