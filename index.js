@@ -9,9 +9,9 @@ const nextImg = document.getElementById('next-image');
 let arrayPreviousImg = [];
 let arrayNextImg = [];
 let counterPrevious = 0;
+let amountPrevious = 0;
 let counterNext = 1;
 let firstPrevious;
-let amountPrevious = 0;
 
 button.addEventListener('click', getImagem);
 
