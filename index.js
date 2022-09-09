@@ -55,7 +55,6 @@ function resetButtons() {
     nextImg.style.display = "inline";
 }
 
-
 previousImg.addEventListener('click', () => {
     if (counterPrevious > 0) {
         
