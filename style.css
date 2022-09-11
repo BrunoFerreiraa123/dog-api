@@ -67,8 +67,7 @@ div.image {
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 0 8px 32px 0 #000000;
     display:none;
-    margin: 20px auto;
-    
+    margin: 20px auto;  
 }
 button {
     background-color: transparent;
